@@ -20,6 +20,14 @@ export {
         TypeOrder side;
         Order* prev;
         Order* next;
+        
+        uint64_t getTotalVolume(){
+            return price * orderId;
+        }
+
+        bool buyOrder(){
+            return side == TypeOrder::BUY;
+        }
     };
 }
 
