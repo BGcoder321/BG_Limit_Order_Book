@@ -1,3 +1,6 @@
+# Vscode nonsense
+.vscode/*
+
 # BG: idk why this folder exists
 CMakeFiles/*
 

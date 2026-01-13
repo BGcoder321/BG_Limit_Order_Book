@@ -136,6 +136,30 @@ BG_LOB/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BG_LOB.dir/build.make CMakeFiles/BG_LOB.dir/build
 .PHONY : BG_LOB/fast
 
+src/BG_MAIN_INCLUDES.o: src/BG_MAIN_INCLUDES.cppm.o
+.PHONY : src/BG_MAIN_INCLUDES.o
+
+# target to build an object file
+src/BG_MAIN_INCLUDES.cppm.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BG_LOB.dir/build.make CMakeFiles/BG_LOB.dir/src/BG_MAIN_INCLUDES.cppm.o
+.PHONY : src/BG_MAIN_INCLUDES.cppm.o
+
+src/BG_MAIN_INCLUDES.i: src/BG_MAIN_INCLUDES.cppm.i
+.PHONY : src/BG_MAIN_INCLUDES.i
+
+# target to preprocess a source file
+src/BG_MAIN_INCLUDES.cppm.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BG_LOB.dir/build.make CMakeFiles/BG_LOB.dir/src/BG_MAIN_INCLUDES.cppm.i
+.PHONY : src/BG_MAIN_INCLUDES.cppm.i
+
+src/BG_MAIN_INCLUDES.s: src/BG_MAIN_INCLUDES.cppm.s
+.PHONY : src/BG_MAIN_INCLUDES.s
+
+# target to generate assembly for a file
+src/BG_MAIN_INCLUDES.cppm.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BG_LOB.dir/build.make CMakeFiles/BG_LOB.dir/src/BG_MAIN_INCLUDES.cppm.s
+.PHONY : src/BG_MAIN_INCLUDES.cppm.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -160,6 +184,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BG_LOB.dir/build.make CMakeFiles/BG_LOB.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/order.o: src/order.cppm.o
+.PHONY : src/order.o
+
+# target to build an object file
+src/order.cppm.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BG_LOB.dir/build.make CMakeFiles/BG_LOB.dir/src/order.cppm.o
+.PHONY : src/order.cppm.o
+
+src/order.i: src/order.cppm.i
+.PHONY : src/order.i
+
+# target to preprocess a source file
+src/order.cppm.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BG_LOB.dir/build.make CMakeFiles/BG_LOB.dir/src/order.cppm.i
+.PHONY : src/order.cppm.i
+
+src/order.s: src/order.cppm.s
+.PHONY : src/order.s
+
+# target to generate assembly for a file
+src/order.cppm.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BG_LOB.dir/build.make CMakeFiles/BG_LOB.dir/src/order.cppm.s
+.PHONY : src/order.cppm.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -170,9 +218,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... BG_LOB"
+	@echo "... src/BG_MAIN_INCLUDES.o"
+	@echo "... src/BG_MAIN_INCLUDES.i"
+	@echo "... src/BG_MAIN_INCLUDES.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/order.o"
+	@echo "... src/order.i"
+	@echo "... src/order.s"
 .PHONY : help
 
 
