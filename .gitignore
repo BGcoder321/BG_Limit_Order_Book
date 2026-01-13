@@ -1,3 +1,6 @@
+# BG: idk why this folder exists
+CMakeFiles/*
+
 # Ignore Build Folder Files
 build/*
 
