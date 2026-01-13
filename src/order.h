@@ -1,14 +1,11 @@
-import BG_MAIN_INCLUDES_H;
+#include "BG_MAIN_INCLUDES.h";
 
-module;
-export module order;
-
-export enum class TypeOrder{
+enum TypeOrder{
     BUY,
     SELL
 };
 
-export struct alignas(64) Order{
+struct alignas(64) Order{
     Order ( uint64_t price, uint64_t orderId, uint64_t quantity, TypeOrder orderType) : price(price),
                 orderId(orderId),
                 quantity(quantity),
@@ -23,11 +20,11 @@ export struct alignas(64) Order{
     Order* prev;
     Order* next;
     
-    uint64_t getTotalVolume(){
+    inline constexpr uint64_t getTotalVolume(){
         return price * orderId;
     }
 
-    bool buyOrder(){
+    inline constexpr bool buyOrder(){
         return side == TypeOrder::BUY;
     }
 };
