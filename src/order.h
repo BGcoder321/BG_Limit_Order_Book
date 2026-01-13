@@ -1,8 +1,10 @@
-#include "BG_MAIN_INCLUDES.h";
+#ifndef ORDER_H
+#define ORDER_H
+#include <cstdint>
 
-enum TypeOrder{
-    BUY,
-    SELL
+enum TypeOrder : uint8_t {
+    BUY = 0,
+    SELL = 1
 };
 
 struct alignas(64) Order{
@@ -20,11 +22,12 @@ struct alignas(64) Order{
     Order* prev;
     Order* next;
     
-    inline constexpr uint64_t getTotalVolume(){
-        return price * orderId;
+    inline constexpr uint64_t getTotalVolume() noexcept { // should this be constexpr or const noexcept?
+        return price * quantity;
     }
 
     inline constexpr bool buyOrder(){
         return side == TypeOrder::BUY;
     }
 };
+#endif // ORDER_H
