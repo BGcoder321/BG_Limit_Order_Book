@@ -1,5 +1,5 @@
-#ifndef ORDER_H
-#define ORDER_H
+#ifndef Order_H
+#define Order_H
 #include <cstdint>
 
 enum TypeOrder : uint8_t {
@@ -13,7 +13,8 @@ struct alignas(64) Order{
                 quantity(quantity),
                 side(orderType),
                 prev(nullptr),
-                next(nullptr) {} 
+                next(nullptr),
+                poolParent(nullptr) {} 
 
     uint64_t price;
     uint64_t orderId;
@@ -21,13 +22,23 @@ struct alignas(64) Order{
     TypeOrder side;
     Order* prev;
     Order* next;
+    Order* poolParent;
     
-    inline constexpr uint64_t getTotalVolume() noexcept { // should this be constexpr or const noexcept?
+    inline constexpr uint64_t getNotional() noexcept { // should this be constexpr or const noexcept?
         return price * quantity;
     }
 
-    inline constexpr bool buyOrder(){
+    inline constexpr bool buyOrder() noexcept{
         return side == TypeOrder::BUY;
     }
+    
+    constexpr void reset() noexcept{
+        price = 0; 
+        orderId = 0;
+        quantity = 0;
+        prev = nullptr;
+        next = nullptr;
+        poolParent = nullptr;
+    }
 };
-#endif // ORDER_H
+#endif // Order_H
