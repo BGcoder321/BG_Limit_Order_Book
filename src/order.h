@@ -1,6 +1,7 @@
 #ifndef Order_H
 #define Order_H
 #include <cstdint>
+#include "PriceLevel.h"
 
 enum TypeOrder : uint8_t {
     BUY = 0,
@@ -14,7 +15,8 @@ struct alignas(64) Order{
                 side(orderType),
                 prev(nullptr),
                 next(nullptr),
-                poolParent(nullptr) {} 
+                parentLimit(nullptr) {} 
+    Order() = default;
 
     uint64_t price;
     uint64_t orderId;
@@ -22,7 +24,7 @@ struct alignas(64) Order{
     TypeOrder side;
     Order* prev;
     Order* next;
-    Order* poolParent;
+    PriceLevel* parentLimit;
     
     inline constexpr uint64_t getNotional() noexcept { // should this be constexpr or const noexcept?
         return price * quantity;
@@ -32,13 +34,17 @@ struct alignas(64) Order{
         return side == TypeOrder::BUY;
     }
     
-    constexpr void reset() noexcept{
+    inline constexpr void reset() noexcept{
         price = 0; 
         orderId = 0;
         quantity = 0;
         prev = nullptr;
         next = nullptr;
-        poolParent = nullptr;
+        parentLimit = nullptr;
+    }
+
+    bool operator ==(const Order* a){
+        return orderId == a->orderId;
     }
 };
 #endif // Order_H

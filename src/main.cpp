@@ -1,13 +1,15 @@
 #include "BG_MAIN_INCLUDES.h";
 
-#include "OrderPool.h"
+#include "ObjectPool.h"
 #include "PriceLevel.h"
+#include "OrderBook.h"
+// constexpr size_t MAX_PRICE = static_cast<size_t>(1e5)+1;
 
 int main(){
-    OrderPool<Order, 100000> orderPool;
-    OrderPool<PriceLevel, 10000> levelPool;
+    ObjectPool<Order, MAX_PRICE> orderPool;
+    ObjectPool<PriceLevel, MAX_PRICE> pricePool;
 
-    OrderBook book{};
+    OrderBook book(orderPool, pricePool);
 
     std::cout << "Starting Limit_Order_Book" << std::endl;
 

@@ -1,12 +1,13 @@
-#ifndef OrderPool_H
-#define OrderPool_H
+#ifndef ObjectPool_H
+#define ObjectPool_H
 #include "Order.h"
 #include <vector>
 #include <memory>
 
 template <typename T, size_t maxPoolSize>
-class OrderPool {
-    OrderPool() : pool(maxPoolSize) {
+class ObjectPool {
+public:
+    ObjectPool() : pool(maxPoolSize) {
         freeList.reserve(maxPoolSize);
         for(auto& order : pool){
             freeList.push_back(&order);
@@ -24,9 +25,10 @@ class OrderPool {
         ptr->reset();
         freeList.push_back(ptr);
     }
+
 private:
     std::vector<T*> freeList;
     std::vector<T> pool;
 };
 
-#endif // OrderPool_H
+#endif // ObjectPool_H

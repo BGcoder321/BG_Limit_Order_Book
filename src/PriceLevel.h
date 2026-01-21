@@ -18,9 +18,32 @@ struct alignas(64) PriceLevel{
             head = order;
             tail = order;
         }else{
+            order->prev = tail;
             tail->next = order;
             tail = tail->next;
         }
+        order->parentLimit = this; 
+    }
+
+    void remove(Order* order){
+        if(head == order){
+            head = head->next;
+            head->prev = nullptr;
+        }else if(tail == order){
+            tail = order->prev;
+            tail->next = nullptr;
+        }else{
+            order->prev->next = order->next;
+            order->next->prev = order->prev; 
+        }
+    }
+
+    inline constexpr void reset() noexcept {
+        price = 0;
+        quantity = 0;
+        orderCount = 0;
+        head = nullptr;
+        tail = nullptr;
     }
 };
 
