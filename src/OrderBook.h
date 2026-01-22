@@ -16,8 +16,15 @@ struct OrderBook{
                                                     orderPool_(orderPool), 
                                                     pricePool_(pricePool) {}
 
-    void executeOrder(Order* order){
+    void executeOrder(Order* order, uint64_t fill){
+        order->quantity -= fill;
 
+        PriceLevel* priceLevel = static_cast<PriceLimit*>(order->parentLimit);
+        priceLevel->volume -= fill;
+
+        if(order->quantity == 0){
+            cancelOrder(order);
+        }
     }
 
     void cancelOrder(Order* order){
