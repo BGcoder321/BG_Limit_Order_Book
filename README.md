@@ -10,4 +10,4 @@ cmake ..
 make
 ./BG_LOB
 
-
+- Note: Make sure to enable release mode preset for performance

@@ -12,7 +12,7 @@ constexpr size_t MAX_PRICE = static_cast<size_t>(1e5)+1;
 struct OrderBook{
 
     OrderBook(ObjectPool<Order, MAX_PRICE> orderPool,  
-              OrderObjectPoolPool<Order, MAX_PRICE> pricePool) : 
+              OrderBook<Order, MAX_PRICE> pricePool) : 
                                                     orderPool_(orderPool), 
                                                     pricePool_(pricePool) {}
 
